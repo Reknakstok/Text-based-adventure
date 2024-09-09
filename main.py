@@ -1,6 +1,7 @@
 sword_taken = False
 upstairs_left_or_right = ""
 key_taken = False
+secret_room = False
 
 def start_game():
     print("Wilt u uitleg hoe het spel werkt? (ja/nee)")
@@ -51,6 +52,7 @@ def enter_castle():
 def go_upstairs():
     global sword_taken
     global upstairs_left_or_right
+    global secret_room
     print("Je neemt de trap naar boven, terwijl je de krakende trap op loopt zie je aan de muur een zwaard hangen.")
     print("Wil je hem mee nemen? (ja/nee)")
     
@@ -84,6 +86,7 @@ def go_upstairs():
 
     if choice.lower() == "ja":
         print("Er ligt een oude plattegrond van het kasteel. Op de plattegrond zie je dat er achteraan in de kelder een geheime ruimte zit achter een groot schilderij?!?")
+        secret_room = True
 
     print("Waar wil je heen?")
     print("1. Naar de kelder")
@@ -173,6 +176,32 @@ def go_to_other_side():
             else:
                 print("Ongeldige keuze. Probeer het opnieuw.")
                 choice = input("> ")
+
+def past_dragon():
+    if secret_room == True:
+        print("Je ziet het grote schilderij van de plattegrond. Je duwt hem langzaam opzij en je ziet een opening in de muur... Je gaat er doorheen en je ziet een schat liggen!!!")
+        won()
+    else:
+        print("Je doorzoekt de hele kelder maar je vindt helemaal niks, je loopt weer naar boven...")
+
+        choice = input("> ")
+    
+        while True:
+            if choice == "1":
+                go_upstairs()
+                break
+            elif choice == "2" or "3":
+                go_to_ground_flour()
+                break
+            elif choice == "4":
+                go_to_basement()
+                break
+            else:
+                print("Ongeldige keuze. Probeer het opnieuw.")
+                choice = input("> ")
+
+def won():
+    print("U heeft het spel gewonnen, gefeliciteerd!")
 
 while True:
     start_game()
