@@ -1,5 +1,6 @@
 sword_taken = False
 upstairs_left_or_right = ""
+key_taken = False
 
 def start_game():
     print("Wilt u uitleg hoe het spel werkt? (ja/nee)")
@@ -27,7 +28,9 @@ def enter_castle():
     print("Het is donker en stil. Je ziet een trap naar boven en een gang die naar de kelder leidt.")
     print("Waar wil je heen?")
     print("1. Naar boven")
-    print("2. Naar de kelder")
+    print("2. Op de begaande grond blijven en naar links")
+    print("3. Op de begaande grond blijven en naar links")
+    print("4. Naar de kelder")
     
     choice = input("> ")
     
@@ -35,7 +38,10 @@ def enter_castle():
         if choice == "1":
             go_upstairs()
             break
-        elif choice == "2":
+        elif choice == "2" or "3":
+            go_to_ground_flour()
+            break
+        elif choice == "4":
             go_to_basement()
             break
         else:
@@ -78,10 +84,13 @@ def go_upstairs():
 
     if choice.lower() == "ja":
         print("Er ligt een oude plattegrond van het kasteel. Op de plattegrond zie je dat er achteraan in de kelder een geheime ruimte zit achter een groot schilderij?!?")
-        print("Waar wil je heen?")
-        print("1. Naar de kelder")
-        print(f"2. Naar de {upstairs_left_or_right} van de gang")
-        print("3. Naar de begaande grond")
+
+    print("Waar wil je heen?")
+    print("1. Naar de kelder")
+    print(f"2. Naar de {upstairs_left_or_right} van de gang")
+    print("3. Naar de begaande grond")
+
+    choice = input("> ")
 
     while True:
         if choice == "1":
@@ -91,20 +100,79 @@ def go_upstairs():
             go_to_other_side()
             break
         elif choice == "3":
-            print(go_to_ground_flour)
+            go_to_ground_flour()
             break
         else:
             print("Ongeldige keuze. Probeer het opnieuw.")
             choice = input("> ")
 
 def go_to_basement():
-    print("b")
+    global sword_taken
+    print("Je loopt de trap naar beneden...")
+    if sword_taken == True:
+        print("Wilt u uw zwaard mee nemen?")
+        choice = input("> ")
+
+        if choice.lower() == "ja":
+            print("Je neemt je zwaard mee, je komt aan onderaan de trap. Je ziet een grote ruimte in de duisternis. Je loopt richting de zaal... Plots hoor je gegrom! Je ziet voor je een grote draak en hij spuwd vuur recht op je af.")
+            print("Uw avonterier stopt hier want u bent veranderd in een hoopje as.")
+
+        else:
+            ("Je komt aan onderaan de trap. Je ziet een grote ruimte in de duisternis. Je loopt richting de zaal... Plots hoor je gegrom! Je ziet voor je een grote draak maar hij valt je nog niet aan.")
+            print("Wat wil je doen?")
+            print("1. Doorlopen")
+            print("2. Uit het kasteel vluchten")
+
+            choice = input("> ")
+
+            while True:
+                if choice == "1":
+                    print("Je loopt rustig door en de draak blijft gelukkig rustig zitten.")
+                    past_dragon()
+                elif choice == "2":
+                    print("Je rent de trap terug op en vlucht snel uit het kasteel, uw avontuur stopt hier.")
+                    break
+                else:
+                    print("Ongeldige keuze. Probeer het opnieuw.")
+                    choice = input("> ")
 
 def go_to_ground_flour():
-    print("b")
+    print("Je loopt rond door het kasteel, je ziet veel stof. Er is hier al lang niemand geweest... Je vindt een kist...")
+    if key_taken == False:
+        print("Helaas zit er een slot op. Je loopt door maar vindt voorderest niks bijzonders.")
+    else:
+        print("Er zit een slot op, maar je hebt een sleutel gevonden. Wil je proberen of deze past?")
+        if choice.lower() == "ja":
+            print("Je doet de sleutel in het slot. De sleutel past! Je opend de kist en je ziet er een brief in liggen. Je pakt de brief en leest hem:")
+            print("LET OP IN DE KELDER VAN DIT KASTEEL ZIT EEN DRAAK. MAAR WEES NIET GESCHROKKEN, DIT IS EEN TAMME DRAAK. ALLEEN ALS JE MET WAPENS AANKOMT ZAL HIJ UW AANVALLEN UIT ZELFVERDEDIGING.")
+        else:
+            print("Je hebt ervoor gekozen om het niet te proberen. Je loopt door maar vindt voorderest niks bijzonders.")
 
 def go_to_other_side():
-    print("b")
+    print(f"Je loopt naar de {upstairs_left_or_right} kant van de gang de grond begint steeds harder te kraken, wil je doorlopen? (ja/nee)")
+
+    choice = input("> ")
+
+    if choice.lower() == "ja":
+        print("Je loopt door, KRAKKKKKK!!! Je bent door de vloer gevallen... Je bent gelukkig ongedeerd. Je bent nu op de begaande grond.")
+        go_to_ground_flour()
+    else:
+        print("Waar wil je heen?")
+        print("1. Naar de kelder")
+        print("2. Naar de begaande grond")
+
+        choice = input("> ")
+
+        while True:
+            if choice == "1":
+                go_to_basement()
+                break
+            elif choice == "2":
+                print(go_to_ground_flour)
+                break
+            else:
+                print("Ongeldige keuze. Probeer het opnieuw.")
+                choice = input("> ")
 
 while True:
     start_game()
