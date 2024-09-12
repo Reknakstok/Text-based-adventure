@@ -1,0 +1,33 @@
+Code Conventies
+
+1. Algemeen:
+Volg PEP8-richtlijnen.
+Houd code eenvoudig en leesbaar.
+Vermijd complexe oplossingen.
+
+2. Bestandsstructuur:
+Bestandsnamen: kleine letters, woorden gescheiden door underscores.
+Voorbeeld: game_logic.py
+Mapstructuur:
+src/ voor broncode
+tests/ voor tests
+
+3. Indentatie:
+Gebruik 4 spaties per niveau (geen tabs).
+
+4. Naamgeving:
+Variabelen/functies: snake_case (bijv. sword_taken).
+Klassen: PascalCase (bijv. GameEngine).
+Constanten: hoofdletters met underscores (bijv. MAX_LIVES).
+
+5. Functies:
+Houd functies kort en doelgericht.
+Gebruik docstrings voor complexe functies.
+
+6. Commentaar:
+Houd commentaar kort en informatief.
+Gebruik inline commentaar spaarzaam en alleen waar nodig.
+
+7. Imports:
+Plaats alle imports aan het begin van het bestand.
+Groepeer standaardbibliotheken, externe libraries en lokale modules.

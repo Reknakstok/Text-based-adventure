@@ -153,6 +153,23 @@ def go_to_ground_floor():
         else:
             print("Je hebt ervoor gekozen om het niet te proberen. Je loopt door maar vindt voorderest niks bijzonders.")
 
+    print("Waar wil je heen?")
+    print("1. Naar boven")
+    print("2. Naar de kelder")
+    
+    choice = input("> ")
+    
+    while True:
+        if choice == "1":
+            go_upstairs()
+            break
+        elif choice == "2":
+            go_to_basement()
+            break
+        else:
+            print("Ongeldige keuze. Probeer het opnieuw.")
+            choice = input("> ")
+
 def go_to_other_side():
     print(f"Je loopt naar de {upstairs_left_or_right} kant van de gang. De grond begint steeds harder te kraken, wil je doorlopen? (ja/nee)")
 
